@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar transparent>
+    <ion-title>Reset Password</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content scroll="false" class="background">
+<ion-card>
+  <ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-auto><ion-icon name="refresh"></ion-icon></ion-col>
+        <ion-col col-auto>Reset Password</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-header>
+  <ion-card-content>
+    <form (ngSubmit)="passreset()" #registerForm="ngForm">
+
+      <ion-list no-lines>
+
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="email" name="email" placeholder="Email" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <button ion-button class="submit-btn" block type="submit" [disabled]="!registerForm.form.valid">Reset password</button>
+    </form>
+  </ion-card-content>
+</ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-auto><ion-icon name="log-in"></ion-icon></ion-col>
+          <ion-col col-auto>Login</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button block (click)="goBack()">Log in</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

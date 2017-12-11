@@ -1,0 +1,30 @@
+<ion-content class="background">
+  <ion-card>
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-auto><ion-icon name="log-in"></ion-icon></ion-col>
+          <ion-col col-auto>Login</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+    <form (ngSubmit)="Login(user)" #registerForm="ngForm">
+
+          <ion-list no-lines>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="user.email" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="user.password" required></ion-input>
+            </ion-item>
+          </ion-list>
+          <button ion-button class="submit-btn" block type="submit" [disabled]="!registerForm.form.valid">Login</button>
+    </form>
+      <button ion-button class="register-btn"  medium clear  (click)="Register()">Don't have an account? Sign up</button>
+      <button ion-button class="register-btn"  medium clear  (click)="Resetpass()">Reset Password</button>
+    </ion-card-content>
+</ion-card>
+</ion-content>

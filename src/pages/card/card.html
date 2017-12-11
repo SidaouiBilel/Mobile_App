@@ -1,0 +1,105 @@
+  <ion-toolbar no-border-top transparent>
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button value="card" (click)="loadit()">Card</ion-segment-button>
+    <ion-segment-button value="transactions">Transactions</ion-segment-button>
+  </ion-segment>
+  </ion-toolbar>
+<ion-content class="background" scroll="false">
+<div [ngSwitch]="segment">
+<ion-list *ngSwitchCase="'card'">
+  <ion-card>
+    <ion-card-header>
+      <ion-row>
+        <ion-col col-auto><ion-icon name="card"></ion-icon></ion-col>
+        <ion-col col-auto>Credit Card Information</ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-lines>
+        <ion-item color="primary">
+          <ion-grid>
+            <ion-row>
+              <ion-col>Credit Card:</ion-col>
+              <ion-col>{{datas?.carte}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item color="primary">
+          <ion-grid>
+            <ion-row>
+              <ion-col>CVV:</ion-col>
+              <ion-col>{{datas?.ccv}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item color="primary">
+          <ion-grid>
+            <ion-row>
+              <ion-col>Credit:</ion-col>
+              <ion-col>{{cartaz?.solde}} $</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-list>
+<ion-list *ngSwitchCase="'transactions'">
+  <ion-card>
+    <ion-card-header>
+      <ion-row>
+        <ion-col col-auto><ion-icon name="card"></ion-icon></ion-col>
+        <ion-col col-auto>Transactions</ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-toolbar transparent>
+      <ion-segment [(ngModel)]="segment2">
+      <ion-segment-button value="sent">Sent</ion-segment-button>
+      <ion-segment-button value="received" (click)="loadres()">Received</ion-segment-button>
+    </ion-segment>
+      </ion-toolbar>
+      <div [ngSwitch]="segment2">
+        <ion-list *ngSwitchCase="'sent'">
+          <ion-item *ngFor="let se of _sent" style="background: rgba(51, 255, 0, 0.3)">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-auto style="color: white">Receiver:</ion-col>
+                <ion-col col-auto style="color: white">{{se["receiver"]}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-auto style="color: white">Transaction's date:</ion-col>
+                <ion-col col-auto style="color: white">{{se["date"]}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-auto style="color: white">Transaction's Ammount:</ion-col>
+                <ion-col col-auto style="color: white">{{se["ammount"]}}$</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'received'">
+          <ion-item *ngFor="let se of _received" style="background: rgba(204, 51, 0, 0.3)">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-auto style="color: white">Sender:</ion-col>
+                <ion-col col-auto style="color: white">{{se["sender"]}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-auto style="color: white">Transaction's date:</ion-col>
+                <ion-col col-auto style="color: white">{{se["date"]}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-auto style="color: white">Transaction's ammount:</ion-col>
+                <ion-col col-auto style="color: white">{{se["ammount"]}}$</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-list>
+</div>
+</ion-content>

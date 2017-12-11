@@ -1,0 +1,30 @@
+<ion-content class="background" scroll="false">
+  <ion-card>
+    <ion-card-header>
+      User Information
+    </ion-card-header>
+    <ion-card-content>
+         <form (ngSubmit)="SendData()" #registerForm="ngForm">
+        <ion-list no-lines>
+          <ion-item>
+            <ion-input type="text" placeholder=" Full Name" name="nom" [(ngModel)]="userinfo.nom" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" placeholder="Card Number" name="carte" [(ngModel)]="userinfo.card" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" placeholder="CVV" name="ccv" [(ngModel)]="userinfo.ccv" required></ion-input>
+          </ion-item>
+
+        </ion-list>
+
+
+        <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Send</button>
+
+  </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

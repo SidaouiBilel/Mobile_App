@@ -1,0 +1,66 @@
+
+<ion-content padding scroll="false" class="background">
+  <ion-card>
+  <ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-auto><ion-icon name="log-out"></ion-icon></ion-col>
+        <ion-col col-auto>Update</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-header>
+  <ion-card-content>
+    <button ion-button block (click)="chnge()">Change password</button>
+    <ion-item style="background: rgba(0, 0, 255, 0.3);" *ngIf="rst">
+    <form (ngSubmit)="passreset()" #registerForm="ngForm">
+
+      <ion-list no-lines>
+        <ion-item >
+          <ion-input type="text" [(ngModel)]="email" name="email" placeholder="Email" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <button ion-button class="submit-btn" block type="submit" [disabled]="!registerForm.form.valid">Reset password</button>
+    </form>
+    </ion-item>
+  </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+  <ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-auto><ion-icon name="log-out"></ion-icon></ion-col>
+        <ion-col col-auto>Logging out</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-header>
+  <ion-card-content>
+    <button ion-button block (click)="logout()" >Log Out</button>
+  </ion-card-content>
+</ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-auto><ion-icon name="log-out"></ion-icon></ion-col>
+          <ion-col col-auto>Delete</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button block (click)="chnge()">Delete account</button>
+      <ion-item style="background: rgba(0, 0, 255, 0.3);" *ngIf="rst">
+        <form (ngSubmit)="passreset()" #registerForm="ngForm">
+
+          <ion-list no-lines>
+            <ion-item >
+              <ion-input type="text" [(ngModel)]="email" name="email" placeholder="Email" required></ion-input>
+            </ion-item>
+          </ion-list>
+          <button ion-button class="submit-btn" block type="submit" [disabled]="!registerForm.form.valid">Reset password</button>
+        </form>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

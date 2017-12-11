@@ -1,0 +1,78 @@
+<ion-content scroll="false" class="background">
+  <ion-card *ngIf="result">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-auto><ion-icon name="cash"></ion-icon></ion-col>
+          <ion-col col-auto>Sending money to this user</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-lines>
+        <ion-item color="primary">
+          <ion-grid>
+            <ion-row>
+              <ion-col>Name:</ion-col>
+              <ion-col>{{datas?.nom}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item color="primary">
+          <ion-grid>
+            <ion-row>
+              <ion-col>Credit Card:</ion-col>
+              <ion-col>{{datas?.carte}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="result">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-auto><ion-icon name="cash"></ion-icon></ion-col>
+          <ion-col col-auto>Please Enter Amount</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+        <form (ngSubmit)="sendMoney()" #registerForm="ngForm">
+          <ion-list no-lines>
+            <ion-item>
+              <ion-input type="text" placeholder="Amount in $" name="amount" [(ngModel)]="amount" required></ion-input>
+            </ion-item>
+          </ion-list>
+          <button ion-button class="submit-btn" block type="submit" [disabled]="!registerForm.form.valid">Send</button>
+        </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="!result">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-auto><ion-icon name="cash"></ion-icon></ion-col>
+          <ion-col col-auto>Scan code to send money</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button full (click)="scanBarcode()" >Scan Code</button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="!result">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-auto><ion-icon name="qr-scanner"></ion-icon></ion-col>
+          <ion-col col-auto>Generate your code</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button full (click)="genbar()" >Generate Code</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
